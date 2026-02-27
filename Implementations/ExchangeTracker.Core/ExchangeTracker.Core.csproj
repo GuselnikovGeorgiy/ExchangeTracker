@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Abstractions\Core.Abstractions\Core.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Abstractions\DAL.Abstractions\DAL.Abstractions.csproj" />
+      <ProjectReference Include="..\..\Abstractions\Exchanges.Abstractions\Exchanges.Abstractions.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -7,4 +7,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Implementations\Exchanges\BinanceExchange\BinanceExchange.csproj" />
+      <ProjectReference Include="..\Implementations\Exchanges\BybitExchange\BybitExchange.csproj" />
+      <ProjectReference Include="..\Implementations\ExchangeTracker.Core\ExchangeTracker.Core.csproj" />
+      <ProjectReference Include="..\Implementations\ExchangeTracker.DAL\ExchangeTracker.DAL.csproj" />
+    </ItemGroup>
+
 </Project>
