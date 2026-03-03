@@ -10,17 +10,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTracker.Core", "Imp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeTracker.DAL", "Implementations\ExchangeTracker.DAL\ExchangeTracker.DAL.csproj", "{7E8787D8-E03F-4AEA-AF26-806A90FDB54A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exchanges", "Exchanges", "{D43CA2DA-7A9F-4A46-8100-62870D4D6376}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExchangeClients", "ExchangeClients", "{D43CA2DA-7A9F-4A46-8100-62870D4D6376}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinanceExchange", "Implementations\Exchanges\BinanceExchange\BinanceExchange.csproj", "{57B9D218-07AA-4849-8ED5-B98097132A81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinanceExchangeClient", "Implementations\Exchanges\BinanceExchangeClient\BinanceExchangeClient.csproj", "{57B9D218-07AA-4849-8ED5-B98097132A81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BybitExchange", "Implementations\Exchanges\BybitExchange\BybitExchange.csproj", "{007A2427-3139-4873-8DCB-0AA011105BE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BybitExchangeClient", "Implementations\Exchanges\BybitExchangeClient\BybitExchangeClient.csproj", "{007A2427-3139-4873-8DCB-0AA011105BE9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Abstractions", "Abstractions\Core.Abstractions\Core.Abstractions.csproj", "{4CD5432B-8BF7-4ABB-8379-44CF30AFBD67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Abstractions", "Abstractions\DAL.Abstractions\DAL.Abstractions.csproj", "{3363E2DC-4182-43CA-BC53-4F1624CB3C8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchanges.Abstractions", "Abstractions\Exchanges.Abstractions\Exchanges.Abstractions.csproj", "{9548D97E-F34E-4E48-9A61-D0E8627A452B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeClients.Abstractions", "Abstractions\ExchangeClients.Abstractions\ExchangeClients.Abstractions.csproj", "{9548D97E-F34E-4E48-9A61-D0E8627A452B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
