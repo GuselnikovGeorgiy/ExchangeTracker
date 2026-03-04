@@ -15,10 +15,10 @@ public class PriceController : ControllerBase
     public async Task<ActionResult<int>> GetPairPriceFromExchange(
         [FromQuery] PriceDto priceDto,
         [FromServices] IMapper mapper,
-        [FromServices] IExchangePriceQueryOperation queryOperations,
+        [FromServices] IExchangePairPriceQueryOperation queryOperations,
         CancellationToken ct)
     {
-        var operationModel = mapper.Map<GetPriceQueryOperationModel>(priceDto);
+        var operationModel = mapper.Map<GetPairPriceQueryOperationModel>(priceDto);
         var result = await queryOperations.GetPairPriceAsync(operationModel, ct);
         if (result.IsFailure)
             return result.Error.ToResponse();

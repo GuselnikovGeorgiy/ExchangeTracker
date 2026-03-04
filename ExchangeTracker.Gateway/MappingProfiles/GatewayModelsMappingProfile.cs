@@ -8,6 +8,6 @@ public class GatewayModelsMappingProfile : Profile
 {
     public GatewayModelsMappingProfile()
     {
-        CreateMap<PriceDto, GetPriceQueryOperationModel>();
+        CreateMap<PriceDto, GetPairPriceQueryOperationModel>();
     }
 }
