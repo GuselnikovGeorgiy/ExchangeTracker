@@ -17,6 +17,13 @@ public static class AutoMapperConfiguration
         services.AddSingleton(mapper);
     }
 
+    public static void ValidateMappingProfiles(this IServiceProvider serviceProvider)
+    {
+        serviceProvider.GetRequiredService<IMapper>()
+            .ConfigurationProvider
+            .AssertConfigurationIsValid();
+    }
+
     private static void ConfigureGatewayProfiles(this IMapperConfigurationExpression mc)
     {
         var profiles = typeof(GatewayModelsMappingProfile)

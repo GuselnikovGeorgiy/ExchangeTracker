@@ -1,6 +1,7 @@
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace ExchangeTracker.Gateway.Filters;
@@ -12,12 +13,10 @@ public sealed class ApiExceptionFilter(ILogger<ApiExceptionFilter> logger) : Exc
     {
         logger.LogError(context.Exception, "Handling request error");
 
-        var statusCode = context.Exception is ApiException exception
-            ? exception.StatusCode
-            : (int)GenerateStatusCode(context.Exception);
-
+        var statusCode = GenerateStatusCode(context.Exception);
+        
         context.HttpContext.Response.ContentType = "application/json";
-        context.HttpContext.Response.StatusCode = statusCode;
+        context.HttpContext.Response.StatusCode = (int)statusCode;
 
         context.Result = new JsonResult(new { error = context.Exception.GetBaseException().Message });
 
@@ -33,6 +32,9 @@ public sealed class ApiExceptionFilter(ILogger<ApiExceptionFilter> logger) : Exc
             _ when exception is FileNotFoundException => HttpStatusCode.NotFound,
             _ when exception is TimeoutException => HttpStatusCode.RequestTimeout,
             _ when exception is InvalidOperationException => HttpStatusCode.BadRequest, 
+
+            // Database errors
+            _ when exception is DbUpdateException => HttpStatusCode.Conflict,
             
             _ => HttpStatusCode.InternalServerError
         };
