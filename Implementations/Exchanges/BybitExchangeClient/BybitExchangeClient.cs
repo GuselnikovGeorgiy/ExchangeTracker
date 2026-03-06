@@ -8,7 +8,7 @@ internal sealed class BybitExchangeClient(
     IOptions<ExchangeClientOptions> options
     ) : IExchangeClient
 {
-    public Task<int> GetExchangePairPriceAsync(string pairName, CancellationToken ct)
+    public Task<decimal> GetExchangePairPriceAsync(string pairName, CancellationToken ct)
     {
         throw new NotImplementedException();
     }
