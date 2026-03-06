@@ -9,6 +9,6 @@ public static class ServiceConfiguration
 {
     public static void ConfigureCoreServices(this IServiceCollection services)
     {
-        services.AddScoped<IExchangePairPriceQueryOperation, GetPairPairPriceQueryOperation>();
+        services.AddScoped<IGetExchangePairPriceQueryOperation, GetExchangePairPriceQueryOperation>();
     }
 }

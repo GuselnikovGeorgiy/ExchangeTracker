@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ExchangeTracker.Gateway.Configurations;
 
-public static class AutoMapperConfiguration
+internal static class AutoMapperConfiguration
 {
     public static void ConfigureMapper(this IServiceCollection services)
     {

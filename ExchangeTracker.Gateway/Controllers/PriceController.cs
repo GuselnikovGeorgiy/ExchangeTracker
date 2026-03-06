@@ -12,16 +12,16 @@ namespace ExchangeTracker.Gateway.Controllers;
 public class PriceController : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<int>> GetPairPriceFromExchange(
+    public async Task<ActionResult<decimal>> GetPairPriceFromExchange(
         [FromQuery] PriceDto priceDto,
         [FromServices] IMapper mapper,
-        [FromServices] IExchangePairPriceQueryOperation queryOperations,
+        [FromServices] IGetExchangePairPriceQueryOperation queryOperations,
         CancellationToken ct)
     {
         var operationModel = mapper.Map<GetPairPriceQueryOperationModel>(priceDto);
-        var result = await queryOperations.GetPairPriceAsync(operationModel, ct);
+        var result = await queryOperations.GetExchangePairPriceAsync(operationModel, ct);
         if (result.IsFailure)
             return result.Error.ToResponse();
-        return result.Value;
+        return result.Value.Price;
     }
 }
