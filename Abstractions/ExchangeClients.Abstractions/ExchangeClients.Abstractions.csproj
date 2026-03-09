@@ -7,8 +7,4 @@
         <RootNamespace>Exchanges.Abstractions</RootNamespace>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Providers\" />
-    </ItemGroup>
-
 </Project>

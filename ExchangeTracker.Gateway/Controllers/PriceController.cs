@@ -20,8 +20,10 @@ public class PriceController : ControllerBase
     {
         var operationModel = mapper.Map<GetPairPriceQueryOperationModel>(priceDto);
         var result = await queryOperations.GetExchangePairPriceAsync(operationModel, ct);
+        
         if (result.IsFailure)
             return result.Error.ToResponse();
+        
         return result.Value.Price;
     }
 }

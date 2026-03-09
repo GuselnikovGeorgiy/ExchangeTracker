@@ -4,7 +4,7 @@ using ExchangeTracker.Gateway.Models;
 
 namespace ExchangeTracker.Gateway.MappingProfiles;
 
-public class GatewayModelsMappingProfile : Profile
+internal sealed class GatewayModelsMappingProfile : Profile
 {
     public GatewayModelsMappingProfile()
     {

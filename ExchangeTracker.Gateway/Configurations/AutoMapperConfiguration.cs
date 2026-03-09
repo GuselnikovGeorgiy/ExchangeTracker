@@ -1,4 +1,5 @@
 using AutoMapper;
+using ExchangeTracker.Core;
 using ExchangeTracker.Gateway.MappingProfiles;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,13 +9,11 @@ internal static class AutoMapperConfiguration
 {
     public static void ConfigureMapper(this IServiceCollection services)
     {
-        var mapperConfig = new MapperConfiguration(mc =>
+        services.AddAutoMapper(mc =>
         {
             mc.ConfigureGatewayProfiles();
+            mc.ConfigureCoreProfiles();
         });
-        mapperConfig.AssertConfigurationIsValid();
-        IMapper mapper = mapperConfig.CreateMapper();
-        services.AddSingleton(mapper);
     }
 
     public static void ValidateMappingProfiles(this IServiceProvider serviceProvider)
@@ -22,18 +21,5 @@ internal static class AutoMapperConfiguration
         serviceProvider.GetRequiredService<IMapper>()
             .ConfigurationProvider
             .AssertConfigurationIsValid();
-    }
-
-    private static void ConfigureGatewayProfiles(this IMapperConfigurationExpression mc)
-    {
-        var profiles = typeof(GatewayModelsMappingProfile)
-            .Assembly
-            .GetTypes()
-            .Where(x => typeof(Profile).IsAssignableFrom(x));
-
-        foreach (var profile in profiles)
-        {
-            mc.AddProfile(Activator.CreateInstance(profile) as Profile);
-        }
     }
 }

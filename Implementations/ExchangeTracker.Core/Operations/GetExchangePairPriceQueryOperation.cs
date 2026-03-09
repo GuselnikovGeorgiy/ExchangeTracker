@@ -1,3 +1,4 @@
+using AutoMapper;
 using Core.Abstractions;
 using Core.Abstractions.Models;
 using Core.Abstractions.Operations;
@@ -7,7 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 namespace ExchangeTracker.Core.Operations;
 
 internal sealed class GetExchangePairPriceQueryOperation(
-    IServiceProvider provider
+    IServiceProvider provider,
+    IMapper mapper
     ) : IGetExchangePairPriceQueryOperation
 {
     public async Task<Result<PairPriceQueryOperationModel>> GetExchangePairPriceAsync(
@@ -16,6 +18,7 @@ internal sealed class GetExchangePairPriceQueryOperation(
     {
         var clientExchange = provider.GetRequiredKeyedService<IExchangeClient>(getPairPriceOperationModel.ExchangeName);
         var price = await clientExchange.GetExchangePairPriceAsync(getPairPriceOperationModel.PairName, ct);
-        return new PairPriceQueryOperationModel { Price = price };
+        var model = mapper.Map<PairPriceQueryOperationModel>(price);
+        return model;
     }
 }
