@@ -1,6 +1,8 @@
+using Exchanges.Abstractions.Models;
+
 namespace Exchanges.Abstractions;
 
 public interface IExchangeClient
 {
-    Task<decimal> GetExchangePairPriceAsync(string pairName, CancellationToken ct);
+    Task<PriceExchangeModel> GetExchangePairPriceAsync(GetPriceExchangeModel pairName, CancellationToken ct);
 }

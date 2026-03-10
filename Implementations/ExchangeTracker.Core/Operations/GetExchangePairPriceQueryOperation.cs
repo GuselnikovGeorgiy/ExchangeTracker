@@ -3,6 +3,7 @@ using Core.Abstractions;
 using Core.Abstractions.Models;
 using Core.Abstractions.Operations;
 using Exchanges.Abstractions;
+using Exchanges.Abstractions.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ExchangeTracker.Core.Operations;
@@ -17,8 +18,13 @@ internal sealed class GetExchangePairPriceQueryOperation(
         CancellationToken ct)
     {
         var clientExchange = provider.GetRequiredKeyedService<IExchangeClient>(getPairPriceOperationModel.ExchangeName);
-        var price = await clientExchange.GetExchangePairPriceAsync(getPairPriceOperationModel.PairName, ct);
-        var model = mapper.Map<PairPriceQueryOperationModel>(price);
-        return model;
+        
+        var requestModel = mapper.Map<GetPriceExchangeModel>(getPairPriceOperationModel);
+        
+        var price = await clientExchange.GetExchangePairPriceAsync(requestModel, ct);
+        
+        var responseModel = mapper.Map<PairPriceQueryOperationModel>(price);
+        
+        return responseModel;
     }
 }
