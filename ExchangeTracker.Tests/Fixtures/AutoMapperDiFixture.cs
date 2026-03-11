@@ -13,6 +13,7 @@ public sealed class AutoMapperDiFixture : IDisposable
         Services.ConfigureMapper();
         
         Provider = Services.BuildServiceProvider();
+        Provider.ValidateMappingProfiles();
     }
     
     public IServiceCollection? Services { get; private set; }
