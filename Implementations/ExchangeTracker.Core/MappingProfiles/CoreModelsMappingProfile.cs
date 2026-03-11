@@ -9,11 +9,11 @@ internal sealed class CoreModelsMappingProfile : Profile
     public CoreModelsMappingProfile()
     {
         CreateMap<GetPairPriceQueryOperationModel, GetPriceExchangeModel>()
-            .ForMember(dest => dest.PairName, 
-                opt => opt.MapFrom(src => src.PairName));
+            .ForMember(dest => dest, 
+                opt => opt.MapFrom(src => src));
 
         CreateMap<PriceExchangeModel, PairPriceQueryOperationModel>()
-            .ForMember(dest => dest.Price, 
-                opt => opt.MapFrom(src => src.Price));
+            .ForMember(dest => dest, 
+                opt => opt.MapFrom(src => src));
     }
 }
