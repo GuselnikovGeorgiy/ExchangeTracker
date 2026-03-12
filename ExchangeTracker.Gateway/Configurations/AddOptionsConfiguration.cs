@@ -8,8 +8,7 @@ internal static class AddOptionsConfiguration
 {
     public static void ConfigureOptions(this IServiceCollection services, IConfiguration configuration)
     {
-        var asd = configuration.GetSection(nameof(ExchangeClientOptions));
-        services.AddOptions<ExchangeClientOptions>().Bind(asd);
+        services.AddOptions<ExchangeClientOptions>().Bind(configuration.GetSection(nameof(ExchangeClientOptions)));
     }
 
 }

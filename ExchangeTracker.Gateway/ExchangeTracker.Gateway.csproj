@@ -8,6 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Content Include="appsettings*.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
       <ProjectReference Include="..\Implementations\Exchanges\BinanceExchangeClient\BinanceExchangeClient.csproj" />
       <ProjectReference Include="..\Implementations\Exchanges\BybitExchangeClient\BybitExchangeClient.csproj" />
       <ProjectReference Include="..\Implementations\ExchangeTracker.Core\ExchangeTracker.Core.csproj" />
