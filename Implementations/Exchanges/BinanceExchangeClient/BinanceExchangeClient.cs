@@ -1,6 +1,5 @@
-using System.Globalization;
-using System.Net.Http;
-using System.Text.Json;
+using System.Net.Http.Json;
+using AutoMapper;
 using Exchanges.Abstractions;
 using Exchanges.Abstractions.Models;
 using Exchanges.Abstractions.Options;
@@ -9,11 +8,24 @@ using Microsoft.Extensions.Options;
 namespace BinanceExchange;
 
 internal sealed class BinanceExchangeClient(
-    IOptions<ExchangeClientOptions> options
+    IOptions<ExchangeClientOptions> options,
+    IMapper mapper,
+    IHttpClientFactory httpClientFactory
     ) : IExchangeClient
 {
-    public Task<PriceExchangeModel> GetExchangePairPriceAsync(GetPriceExchangeModel pairName, CancellationToken ct)
+    private readonly HttpClient _httpClient = httpClientFactory.CreateClient();
+    
+    public async Task<PriceExchangeModel> GetExchangePairPriceAsync(
+        GetPriceExchangeModel pairName,
+        CancellationToken ct)
     {
-        throw new NotImplementedException();
+        var url = new Uri($"{options.Value.BinanceUrl}ticker/price?symbol={pairName.PairName}");
+
+        var response = await _httpClient.GetAsync(url, ct);
+
+        var responseModel = await response.Content.ReadFromJsonAsync<PriceExchangeResponseModel>(ct);
+
+        return mapper.Map<PriceExchangeModel>(responseModel) 
+               ?? throw new InvalidOperationException();
     }
 }

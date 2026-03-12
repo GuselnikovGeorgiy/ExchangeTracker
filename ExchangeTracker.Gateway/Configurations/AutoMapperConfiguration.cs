@@ -1,4 +1,5 @@
 using AutoMapper;
+using BinanceExchange;
 using ExchangeTracker.Core;
 using ExchangeTracker.Gateway.MappingProfiles;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ public static class AutoMapperConfiguration
         {
             mc.ConfigureGatewayProfiles();
             mc.ConfigureCoreProfiles();
+            mc.ConfigureBinanceProfiles();
         });
     }
 

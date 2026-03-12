@@ -1,10 +1,11 @@
+using System.Runtime.CompilerServices;
 using AutoMapper;
-using Core.Abstractions.Models;
 using Core.Abstractions.Operations;
 using ExchangeTracker.Core.MappingProfiles;
 using ExchangeTracker.Core.Operations;
 using Microsoft.Extensions.DependencyInjection;
 
+[assembly: InternalsVisibleTo("ExchangeTracker.Tests")]
 namespace ExchangeTracker.Core;
 
 public static class ServiceConfiguration
