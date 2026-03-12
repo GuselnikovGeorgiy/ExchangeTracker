@@ -11,10 +11,10 @@ internal sealed class BinanceExchangeClient(
     IOptions<ExchangeClientOptions> options,
     IMapper mapper,
     IHttpClientFactory httpClientFactory
-    ) : IExchangeClient
+) : IExchangeClient
 {
     private readonly HttpClient _httpClient = httpClientFactory.CreateClient();
-    
+
     public async Task<PriceExchangeModel> GetExchangePairPriceAsync(
         GetPriceExchangeModel pairName,
         CancellationToken ct)
@@ -25,7 +25,7 @@ internal sealed class BinanceExchangeClient(
 
         var responseModel = await response.Content.ReadFromJsonAsync<PriceExchangeResponseModel>(ct);
 
-        return mapper.Map<PriceExchangeModel>(responseModel) 
+        return mapper.Map<PriceExchangeModel>(responseModel)
                ?? throw new InvalidOperationException();
     }
 }
