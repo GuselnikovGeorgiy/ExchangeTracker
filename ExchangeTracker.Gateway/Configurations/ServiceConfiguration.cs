@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ExchangeTracker.Gateway.Configurations;
 
-public static class ServiceConfiguration
+internal static class ServiceConfiguration
 {
     public static void ConfigureServices(IServiceCollection services)
     {
