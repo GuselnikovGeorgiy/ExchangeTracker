@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.ConfigureLogging();
 builder.Services.ConfigureOptions(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.ConfigureSwaggerServices();
