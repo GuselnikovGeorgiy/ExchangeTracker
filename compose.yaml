@@ -1,0 +1,7 @@
+﻿services:
+  exchangetracker.gateway:
+    image: exchangetracker.gateway
+    build:
+      context: .
+      dockerfile: ExchangeTracker.Gateway/Dockerfile
+
